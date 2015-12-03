@@ -59,3 +59,33 @@ aetherflowBuff.AddTexture = function ()
 		UI.AddTexture(afImage3.level, afImage3.filepath, "afImage3.tint", "afImage3.x", "afImage3.y", "afImage3.scalex", "afImage3.scaley", "afImage3.rotation", "afImage3.hidden")
 	end
 end
+
+-- Paint the Aetherflow stacks
+aetherflowBuff.Update = function (player)
+	afBuff = player:GetBuffByID(304)
+
+	if afBuff ~= nil then
+		-- Change the visibility of the images depending on the number of stacks
+		nbAFStacks = afBuff.OtherInfo
+		
+		if nbAFStacks == 1 then
+			
+			afImage1.hidden = false
+			afImage2.hidden = true
+			afImage3.hidden = true
+		elseif nbAFStacks == 2 then
+			
+			afImage1.hidden = true
+			afImage2.hidden = false
+			afImage3.hidden = true
+		else
+			afImage1.hidden = true
+			afImage2.hidden = true
+			afImage3.hidden = false
+		end
+	else
+		afImage1.hidden = true
+		afImage2.hidden = true
+		afImage3.hidden = true
+	end
+end
