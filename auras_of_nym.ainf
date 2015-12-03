@@ -5,4 +5,6 @@
 >> Description >> Aura tracking for Scholars.
 >> FileList >>
 main.lua
-aetherflowStacks.lua
+unitframePlayer.lua
+aetherflowBuff.lua
+feyWindBuff.lua

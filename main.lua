@@ -2,7 +2,10 @@
 
 UI.OnLoad = function()
 	-- Adds the texture with 1, 2 and 3 stacks of Aetherflow
-	
+	aetherflowBuff.AddTexture()
+
+	-- Adds the icon for the fey wind buff
+	feyWindBuff.AddTexture()
 end
 
 UI.OnFrame = function(ticks)
