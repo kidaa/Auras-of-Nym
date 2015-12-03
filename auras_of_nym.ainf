@@ -4,4 +4,5 @@
 >> Title >> Auras of Nym
 >> Description >> Aura tracking for Scholars.
 >> FileList >>
-auras.lua
+main.lua
+aetherflowStacks.lua
