@@ -27,7 +27,7 @@ UI.OnLoad = function()
 	feyWindBuff.AddTexture()
 
 	-- Add the player unitFrame
-	-- playerFrame.AddTexture()
+	playerFrame.AddTexture()
 
 	UI.AddLabel(displayLabel.level, displayLabel.font, displayLabel.size, displayLabel.style, "displayLabel.text", "displayLabel.color", "displayLabel.x", "displayLabel.y", "displayLabel.width", "displayLabel.height", "displayLabel.aa", "displayLabel.anchor", "displayLabel.hidden")
 end
@@ -44,7 +44,7 @@ UI.OnFrame = function(ticks)
 			-- displayLabel.text = "WIN"
 			feyWindBuff.Update(self)
 
-			-- playerFrame.Update(self)
+			playerFrame.Update(self)
 		
 			
 		-- else 
@@ -52,6 +52,6 @@ UI.OnFrame = function(ticks)
 		-- end
 	
 	else 
-		-- playerFrame.Hide()
+		playerFrame.Hide()
 	end
 end
