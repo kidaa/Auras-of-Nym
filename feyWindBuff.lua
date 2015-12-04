@@ -23,3 +23,8 @@ feyWindBuff.AddTexture = function ()
 		UI.AddTexture(feyWindImage.level, feyWindImage.filepath, "feyWindImage.tint", "feyWindImage.x", "feyWindImage.y", "feyWindImage.scalex", "feyWindImage.scaley", "feyWindImage.rotation", "feyWindImage.hidden")
 	end
 end
+
+feyWindBuff.Update = function () 
+	if feyWindBuff.load == true then
+	end
+end

@@ -4,16 +4,14 @@ aetherflowBuff = {}
 -- Set to false if you do not want to load this element
 aetherflowBuff.load = true
 
-
-
 -- Properties of the image
 afImagePath = "textures\\yellow_vertical_3_"
 width = 40
 height = 240
 
-stackX = math.floor(UI.PrimaryMonitorWidth / 2) - (height / 2)
+stackX = math.floor(UI.PrimaryMonitorWidth / 2) - 20-- - (height / 2)
 stackY = math.floor(UI.PrimaryMonitorHeight / 2) + (height / 2)
-
+rotation = math.pi / 2
 -- Table containing the AetherFlow aura image with 1 stack (no text will be implemented)
 afImage1 = {}
 afImage1.level = 0
@@ -23,7 +21,7 @@ afImage1.x = stackX -- +240
 afImage1.y = stackY -- -120
 afImage1.scalex = 1
 afImage1.scaley = 1
-afImage1.rotation = 90
+afImage1.rotation = rotation
 afImage1.hidden = true
 
 -- Table containing the AetherFlow aura image with 2 stacks (no text will be implemented)
@@ -35,7 +33,7 @@ afImage2.x = stackX
 afImage2.y = stackY
 afImage2.scalex = 1
 afImage2.scaley = 1
-afImage2.rotation = 90
+afImage2.rotation = rotation
 afImage2.hidden = true
 
 -- Table containing the AetherFlow aura image with 3 stacks (no text will be implemented)
@@ -47,7 +45,7 @@ afImage3.x = stackX
 afImage3.y = stackY
 afImage3.scalex = 1
 afImage3.scaley = 1
-afImage3.rotation = 90
+afImage3.rotation = rotation
 afImage3.hidden = true
 
 
@@ -62,30 +60,32 @@ end
 
 -- Paint the Aetherflow stacks
 aetherflowBuff.Update = function (player)
-	afBuff = player:GetBuffByID(304)
+	if aetherflowBuff.load == true then
+		afBuff = player:GetBuffByID(304)
 
-	if afBuff ~= nil then
-		-- Change the visibility of the images depending on the number of stacks
-		nbAFStacks = afBuff.OtherInfo
-		
-		if nbAFStacks == 1 then
+		if afBuff ~= nil then
+			-- Change the visibility of the images depending on the number of stacks
+			nbAFStacks = afBuff.OtherInfo
 			
-			afImage1.hidden = false
-			afImage2.hidden = true
-			afImage3.hidden = true
-		elseif nbAFStacks == 2 then
-			
-			afImage1.hidden = true
-			afImage2.hidden = false
-			afImage3.hidden = true
+			if nbAFStacks == 1 then
+				
+				afImage1.hidden = false
+				afImage2.hidden = true
+				afImage3.hidden = true
+			elseif nbAFStacks == 2 then
+				
+				afImage1.hidden = true
+				afImage2.hidden = false
+				afImage3.hidden = true
+			else
+				afImage1.hidden = true
+				afImage2.hidden = true
+				afImage3.hidden = false
+			end
 		else
 			afImage1.hidden = true
 			afImage2.hidden = true
-			afImage3.hidden = false
+			afImage3.hidden = true
 		end
-	else
-		afImage1.hidden = true
-		afImage2.hidden = true
-		afImage3.hidden = true
 	end
 end
