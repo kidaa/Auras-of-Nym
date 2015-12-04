@@ -6,12 +6,11 @@ aetherflowBuff.load = true
 
 -- Properties of the image
 afImagePath = "textures\\yellow_vertical_3_"
-width = 40
-height = 240
 
-stackX = math.floor(UI.PrimaryMonitorWidth / 2) - 20-- - (height / 2)
-stackY = math.floor(UI.PrimaryMonitorHeight / 2) + (height / 2)
-rotation = math.pi / 2
+stackX = math.floor(UI.PrimaryMonitorWidth / 2) - 20
+stackY = math.floor(UI.PrimaryMonitorHeight / 2) + 100
+rotationImage = math.pi / 2
+
 -- Table containing the AetherFlow aura image with 1 stack (no text will be implemented)
 afImage1 = {}
 afImage1.level = 0
@@ -21,7 +20,7 @@ afImage1.x = stackX -- +240
 afImage1.y = stackY -- -120
 afImage1.scalex = 1
 afImage1.scaley = 1
-afImage1.rotation = rotation
+afImage1.rotation = rotationImage
 afImage1.hidden = true
 
 -- Table containing the AetherFlow aura image with 2 stacks (no text will be implemented)
@@ -33,7 +32,7 @@ afImage2.x = stackX
 afImage2.y = stackY
 afImage2.scalex = 1
 afImage2.scaley = 1
-afImage2.rotation = rotation
+afImage2.rotation = rotationImage
 afImage2.hidden = true
 
 -- Table containing the AetherFlow aura image with 3 stacks (no text will be implemented)
@@ -45,7 +44,7 @@ afImage3.x = stackX
 afImage3.y = stackY
 afImage3.scalex = 1
 afImage3.scaley = 1
-afImage3.rotation = rotation
+afImage3.rotation = rotationImage
 afImage3.hidden = true
 
 aetherflowBuff.images = {afImage1, afImage2, afImage3}
