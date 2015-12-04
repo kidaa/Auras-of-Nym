@@ -13,6 +13,8 @@ playerFrame.bgLeft.color = "#B3000000"
 playerFrame.bgLeft.tint = "#B3FFFFFF"
 playerFrame.bgLeft.x = math.floor(UI.PrimaryMonitorWidth / 2) - 215
 playerFrame.bgLeft.y = math.floor(UI.PrimaryMonitorHeight / 2) - 60
+playerFrame.bgLeft.originalX = math.floor(UI.PrimaryMonitorWidth / 2) - 215
+playerFrame.bgLeft.originalY = math.floor(UI.PrimaryMonitorHeight / 2) - 60
 playerFrame.bgLeft.width = 40
 playerFrame.bgLeft.height = 240
 playerFrame.bgLeft.rotation = 0
@@ -24,10 +26,12 @@ playerFrame.hpbar.color = "#B300FF00"
 playerFrame.hpbar.tint = "#B3FFFFFF"
 playerFrame.hpbar.x = playerFrame.bgLeft.x + playerFrame.bordersize
 playerFrame.hpbar.y = playerFrame.bgLeft.y + playerFrame.bordersize
+playerFrame.hpbar.originalX = playerFrame.bgLeft.x + playerFrame.bordersize
+playerFrame.hpbar.originalY = playerFrame.bgLeft.y + playerFrame.bordersize
 playerFrame.hpbar.width = playerFrame.bgLeft.width - playerFrame.bordersize*2
 playerFrame.hpbar.height = playerFrame.bgLeft.height - playerFrame.bordersize*2
 playerFrame.hpbar.maxHeight = playerFrame.bgLeft.height - playerFrame.bordersize*2
-playerFrame.hpbar.rotation = -math.pi
+playerFrame.hpbar.rotation = playerFrame.bgLeft.rotation
 playerFrame.hpbar.hidden = true
 
 -- Right background with the MP and TP bars
@@ -38,8 +42,10 @@ playerFrame.bgRight.color = "#B3000000"
 playerFrame.bgRight.tint = "#B3FFFFFF"
 playerFrame.bgRight.x = math.floor(UI.PrimaryMonitorWidth / 2) + 150
 playerFrame.bgRight.y = math.floor(UI.PrimaryMonitorHeight / 2) - 60
-playerFrame.bgRight.width = playerFrame.bgLeft.width * 1.5
-playerFrame.bgRight.height = playerFrame.bgLeft.height
+playerFrame.bgRight.originalX = math.floor(UI.PrimaryMonitorWidth / 2) + 150
+playerFrame.bgRight.originalY = math.floor(UI.PrimaryMonitorHeight / 2) - 60
+playerFrame.bgRight.width = 60
+playerFrame.bgRight.height = 240
 playerFrame.bgRight.rotation = 0
 playerFrame.bgRight.hidden = true
 
@@ -49,10 +55,12 @@ playerFrame.mpbar.color = "#B3D24B87"
 playerFrame.mpbar.tint = "#B3FFFFFF"
 playerFrame.mpbar.x = playerFrame.bgRight.x + playerFrame.bordersize
 playerFrame.mpbar.y = playerFrame.bgRight.y + playerFrame.bordersize
+playerFrame.mpbar.originalX = playerFrame.bgRight.x + playerFrame.bordersize
+playerFrame.mpbar.originalY = playerFrame.bgRight.y + playerFrame.bordersize
 playerFrame.mpbar.width = (playerFrame.bgRight.width/2) - 3
 playerFrame.mpbar.height = playerFrame.bgRight.height - playerFrame.bordersize*2
 playerFrame.mpbar.maxHeight = playerFrame.bgRight.height - playerFrame.bordersize*2
-playerFrame.mpbar.rotation = 0
+playerFrame.mpbar.rotation = playerFrame.bgRight.rotation
 playerFrame.mpbar.hidden = true
 
 playerFrame.tpbar = {}
@@ -61,10 +69,12 @@ playerFrame.tpbar.color = "#B3F2A849"
 playerFrame.tpbar.tint = "#B3FFFFFF"
 playerFrame.tpbar.x = playerFrame.bgRight.x + playerFrame.bordersize * 2 + playerFrame.mpbar.width
 playerFrame.tpbar.y = playerFrame.bgRight.y + playerFrame.bordersize
+playerFrame.tpbar.originalX = playerFrame.bgRight.x + playerFrame.bordersize * 2 + playerFrame.mpbar.width
+playerFrame.tpbar.originalY = playerFrame.bgRight.y + playerFrame.bordersize
 playerFrame.tpbar.width = playerFrame.mpbar.width
 playerFrame.tpbar.height = playerFrame.bgRight.height - playerFrame.bordersize*2
 playerFrame.tpbar.maxHeight = playerFrame.bgRight.height - playerFrame.bordersize*2
-playerFrame.tpbar.rotation = 0
+playerFrame.tpbar.rotation = playerFrame.bgRight.rotation
 playerFrame.tpbar.hidden = true
 
 -- Actual values
@@ -157,7 +167,10 @@ playerFrame.update = function (player)
 		applyToTable(playerFrame, "hidden", false)
 
 		playerFrame.hpbar.height = ((player.CurrentHP * 100) / player.MaxHP) * (playerFrame.hpbar.maxHeight / 100)
+		playerFrame.hpbar.y = playerFrame.hpbar.originalY + (playerFrame.hpbar.maxHeight - playerFrame.hpbar.height)
+
 		playerFrame.tpbar.height = ((player.CurrentTP * 100) / player.MaxTP) * (playerFrame.tpbar.maxHeight / 100)
+		playerFrame.tpbar.y = playerFrame.tpbar.originalY + (playerFrame.tpbar.maxHeight - playerFrame.tpbar.height)
 
 		if player.MaxMP > 0 then
 			playerFrame.mpbar.height = ((player.CurrentMP * 100) / player.MaxMP) * (playerFrame.mpbar.maxHeight / 100)
@@ -168,6 +181,7 @@ playerFrame.update = function (player)
 		else
 			playerFrame.mpbar.hidden = true
 		end
+		playerFrame.mpbar.y = playerFrame.mpbar.originalY + (playerFrame.mpbar.maxHeight - playerFrame.mpbar.height)
 
 	end
 end
