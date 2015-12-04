@@ -166,17 +166,23 @@ playerFrame.update = function (player)
 
 		applyToTable(playerFrame, "hidden", false)
 
+		playerFrame.valueHP.text = player.CurrentHP
+		playerFrame.percentHP.text = (player.MaxHP * 100) / player.CurrentHP 
 		playerFrame.hpbar.height = ((player.CurrentHP * 100) / player.MaxHP) * (playerFrame.hpbar.maxHeight / 100)
 		playerFrame.hpbar.y = playerFrame.hpbar.originalY + (playerFrame.hpbar.maxHeight - playerFrame.hpbar.height)
 
+		playerFrame.valueTP.text = player.CurrentTP
 		playerFrame.tpbar.height = ((player.CurrentTP * 100) / player.MaxTP) * (playerFrame.tpbar.maxHeight / 100)
 		playerFrame.tpbar.y = playerFrame.tpbar.originalY + (playerFrame.tpbar.maxHeight - playerFrame.tpbar.height)
 
 		if player.MaxMP > 0 then
+			playerFrame.valueMP.text = player.CurrentMP
 			playerFrame.mpbar.height = ((player.CurrentMP * 100) / player.MaxMP) * (playerFrame.mpbar.maxHeight / 100)
 		elseif player.MaxCP > 0 then
+			playerFrame.valueMP.text = player.CurrentCP
 			playerFrame.mpbar.height = ((player.CurrentCP * 100) / player.MaxCP) * (playerFrame.mpbar.maxHeight / 100)
 		elseif player.MaxGP > 0 then
+			playerFrame.valueMP.text = player.CurrentGP
 			playerFrame.mpbar.height = ((player.CurrentGP * 100) / player.MaxGP) * (playerFrame.mpbar.maxHeight / 100)
 		else
 			playerFrame.mpbar.hidden = true
