@@ -15,19 +15,19 @@ displayLabel.width = 128
 displayLabel.height = 128
 displayLabel.aa = true
 displayLabel.anchor = 0
-displayLabel.hidden = false
+displayLabel.hidden = true
 displayLabel.format = ""
 
 
 UI.OnLoad = function()
 	-- Adds the texture with 1, 2 and 3 stacks of Aetherflow
-	aetherflowBuff.AddTexture()
+	aetherflowBuff.addTexture()
 
 	-- Adds the icon for the fey wind buff
-	feyWindBuff.AddTexture()
+	feyWindBuff.addTexture()
 
 	-- Add the player unitFrame
-	playerFrame.AddTexture()
+	playerFrame.addTexture()
 
 	UI.AddLabel(displayLabel.level, displayLabel.font, displayLabel.size, displayLabel.style, "displayLabel.text", "displayLabel.color", "displayLabel.x", "displayLabel.y", "displayLabel.width", "displayLabel.height", "displayLabel.aa", "displayLabel.anchor", "displayLabel.hidden")
 end
@@ -35,23 +35,27 @@ end
 UI.OnFrame = function(ticks)
 	local self = FF.GetPlayer()
 
-	if self ~= nil then
-		-- Only for Scholars
-		displayLabel.text = self.Job
-		displayLabel.hidden = true
-		-- if self.Job 4== 28 then
-			aetherflowBuff.Update(self)
-			-- displayLabel.text = "WIN"
-			feyWindBuff.Update(self)
+	-- displayLabel.text = "hello"
+	-- displayLabel.hidden = true
 
-			playerFrame.Update(self)
+	if self ~= nil then
+		local job = string.match(tostring(self.Job), "%d+")
+
+		-- Only for Scholars
+		if job == "28" then
+			aetherflowBuff.update(self)
+			-- displayLabel.text = "WIN"
+			feyWindBuff.update(self)
+
+			playerFrame.update(self)
 		
-			
-		-- else 
-			-- playerFrame.Hide()
-		-- end
+		else 
+			playerFrame.hide()
+			aetherflowBuff.hide()
+		end
 	
 	else 
-		playerFrame.Hide()
+		playerFrame.hide()
+		aetherflowBuff.hide()
 	end
 end

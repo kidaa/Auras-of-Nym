@@ -16,7 +16,7 @@ playerFrame.bgLeft.y = math.floor(UI.PrimaryMonitorHeight / 2) - 60
 playerFrame.bgLeft.width = 40
 playerFrame.bgLeft.height = 240
 playerFrame.bgLeft.rotation = 0
-playerFrame.bgLeft.hidden = false
+playerFrame.bgLeft.hidden = true
 
 playerFrame.hpbar = {}
 playerFrame.hpbar.level = 0
@@ -27,8 +27,8 @@ playerFrame.hpbar.y = playerFrame.bgLeft.y + playerFrame.bordersize
 playerFrame.hpbar.width = playerFrame.bgLeft.width - playerFrame.bordersize*2
 playerFrame.hpbar.height = playerFrame.bgLeft.height - playerFrame.bordersize*2
 playerFrame.hpbar.maxHeight = playerFrame.bgLeft.height - playerFrame.bordersize*2
-playerFrame.hpbar.rotation = math.pi/2
-playerFrame.hpbar.hidden = false
+playerFrame.hpbar.rotation = -math.pi
+playerFrame.hpbar.hidden = true
 
 -- Right background with the MP and TP bars
 
@@ -41,7 +41,7 @@ playerFrame.bgRight.y = math.floor(UI.PrimaryMonitorHeight / 2) - 60
 playerFrame.bgRight.width = playerFrame.bgLeft.width * 1.5
 playerFrame.bgRight.height = playerFrame.bgLeft.height
 playerFrame.bgRight.rotation = 0
-playerFrame.bgRight.hidden = false
+playerFrame.bgRight.hidden = true
 
 playerFrame.mpbar = {}
 playerFrame.mpbar.level = 0
@@ -53,7 +53,7 @@ playerFrame.mpbar.width = (playerFrame.bgRight.width/2) - 3
 playerFrame.mpbar.height = playerFrame.bgRight.height - playerFrame.bordersize*2
 playerFrame.mpbar.maxHeight = playerFrame.bgRight.height - playerFrame.bordersize*2
 playerFrame.mpbar.rotation = 0
-playerFrame.mpbar.hidden = false
+playerFrame.mpbar.hidden = true
 
 playerFrame.tpbar = {}
 playerFrame.tpbar.level = 0
@@ -65,7 +65,7 @@ playerFrame.tpbar.width = playerFrame.mpbar.width
 playerFrame.tpbar.height = playerFrame.bgRight.height - playerFrame.bordersize*2
 playerFrame.tpbar.maxHeight = playerFrame.bgRight.height - playerFrame.bordersize*2
 playerFrame.tpbar.rotation = 0
-playerFrame.tpbar.hidden = false
+playerFrame.tpbar.hidden = true
 
 -- Actual values
 playerFrame.valueHP = {}
@@ -81,7 +81,7 @@ playerFrame.valueHP.width = 128
 playerFrame.valueHP.height = 128
 playerFrame.valueHP.aa = true
 playerFrame.valueHP.anchor = 0
-playerFrame.valueHP.hidden = false
+playerFrame.valueHP.hidden = true
 playerFrame.valueHP.format = ""
 
 playerFrame.valueMP = {}
@@ -97,7 +97,7 @@ playerFrame.valueMP.width = 128
 playerFrame.valueMP.height = 128
 playerFrame.valueMP.aa = true
 playerFrame.valueMP.anchor = 0
-playerFrame.valueMP.hidden = false
+playerFrame.valueMP.hidden = true
 playerFrame.valueMP.format = ""
 
 playerFrame.valueTP = {}
@@ -113,7 +113,7 @@ playerFrame.valueTP.width = 128
 playerFrame.valueTP.height = 128
 playerFrame.valueTP.aa = true
 playerFrame.valueTP.anchor = 0
-playerFrame.valueTP.hidden = false
+playerFrame.valueTP.hidden = true
 playerFrame.valueTP.format = ""
 
 -- Values as percentages
@@ -130,11 +130,11 @@ playerFrame.percentHP.width = 128
 playerFrame.percentHP.height = 128
 playerFrame.percentHP.aa = true
 playerFrame.percentHP.anchor = 0
-playerFrame.percentHP.hidden = false
+playerFrame.percentHP.hidden = true
 playerFrame.percentHP.format = ""
 
 
-playerFrame.AddTexture = function () 
+playerFrame.addTexture = function () 
 	if playerFrame.load == true then
 		UI.AddRectangle(playerFrame.bgLeft.level, playerFrame.bgLeft.color, "playerFrame.bgLeft.tint", "playerFrame.bgLeft.x", "playerFrame.bgLeft.y", "playerFrame.bgLeft.width", "playerFrame.bgLeft.height", "playerFrame.bgLeft.rotation", "playerFrame.bgLeft.hidden")
 		UI.AddRectangle(playerFrame.hpbar.level, playerFrame.hpbar.color, "playerFrame.hpbar.tint", "playerFrame.hpbar.x", "playerFrame.hpbar.y", "playerFrame.hpbar.width", "playerFrame.hpbar.height", "playerFrame.hpbar.rotation", "playerFrame.hpbar.hidden")
@@ -151,19 +151,10 @@ playerFrame.AddTexture = function ()
 	end
 end
 
-playerFrame.Update = function (player)
+playerFrame.update = function (player)
 	if playerFrame.load == true then
-		
-		playerFrame.bgLeft.hidden = false
-		playerFrame.hpbar.hidden = false
-		playerFrame.bgLeft.hidden = false
-		playerFrame.mpbar.hidden = false
-		playerFrame.tpbar.hidden = false
 
-		playerFrame.valueHP.hidden = false
-		playerFrame.valueMP.hidden = false
-		playerFrame.valueTP.hidden = false
-		playerFrame.percentHP.hidden = false
+		applyToTable(playerFrame, "hidden", false)
 
 		playerFrame.hpbar.height = ((player.CurrentHP * 100) / player.MaxHP) * (playerFrame.hpbar.maxHeight / 100)
 		playerFrame.tpbar.height = ((player.CurrentTP * 100) / player.MaxTP) * (playerFrame.tpbar.maxHeight / 100)
@@ -181,12 +172,8 @@ playerFrame.Update = function (player)
 	end
 end
 
-playerFrame.Hide = function () 
+playerFrame.hide = function () 
 	if playerFrame.load == true then
-		playerFrame.bgLeft.hidden = true
-		playerFrame.hpbar.hidden = true
-		playerFrame.bgRight.hidden = true
-		playerFrame.mpbar.hidden = true
-		playerFrame.tpbar.hidden = true
+		applyToTable(playerFrame, "hidden", true)
 	end
 end

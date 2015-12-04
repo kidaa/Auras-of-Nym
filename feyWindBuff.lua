@@ -18,13 +18,13 @@ feyWindImage.rotation = 0
 feyWindImage.hidden = true
 
 
-feyWindBuff.AddTexture = function () 
+feyWindBuff.addTexture = function () 
 	if feyWindBuff.load == true then
 		UI.AddTexture(feyWindImage.level, feyWindImage.filepath, "feyWindImage.tint", "feyWindImage.x", "feyWindImage.y", "feyWindImage.scalex", "feyWindImage.scaley", "feyWindImage.rotation", "feyWindImage.hidden")
 	end
 end
 
-feyWindBuff.Update = function () 
+feyWindBuff.update = function () 
 	if feyWindBuff.load == true then
 	end
 end

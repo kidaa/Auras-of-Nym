@@ -48,9 +48,9 @@ afImage3.scaley = 1
 afImage3.rotation = rotation
 afImage3.hidden = true
 
+aetherflowBuff.images = {afImage1, afImage2, afImage3}
 
-
-aetherflowBuff.AddTexture = function () 
+aetherflowBuff.addTexture = function () 
 	if aetherflowBuff.load == true then
 		UI.AddTexture(afImage1.level, afImage1.filepath, "afImage1.tint", "afImage1.x", "afImage1.y", "afImage1.scalex", "afImage1.scaley", "afImage1.rotation", "afImage1.hidden")
 		UI.AddTexture(afImage2.level, afImage2.filepath, "afImage2.tint", "afImage2.x", "afImage2.y", "afImage2.scalex", "afImage2.scaley", "afImage2.rotation", "afImage2.hidden")
@@ -59,7 +59,7 @@ aetherflowBuff.AddTexture = function ()
 end
 
 -- Paint the Aetherflow stacks
-aetherflowBuff.Update = function (player)
+aetherflowBuff.update = function (player)
 	if aetherflowBuff.load == true then
 		afBuff = player:GetBuffByID(304)
 
@@ -87,5 +87,11 @@ aetherflowBuff.Update = function (player)
 			afImage2.hidden = true
 			afImage3.hidden = true
 		end
+	end
+end
+
+aetherflowBuff.hide = function () 
+	if aetherflowBuff.load == true then
+		applyToTable(aetherflowBuff.images, "hidden", true)
 	end
 end

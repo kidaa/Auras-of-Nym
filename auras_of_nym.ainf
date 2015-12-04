@@ -4,6 +4,7 @@
 >> Title >> Auras of Nym
 >> Description >> Aura tracking for Scholars.
 >> FileList >>
+utils.lua
 main.lua
 aetherflowBuff.lua
 feyWindBuff.lua
