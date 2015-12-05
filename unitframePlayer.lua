@@ -15,10 +15,21 @@ playerFrame.bgLeft.x = math.floor(UI.PrimaryMonitorWidth / 2) - 215
 playerFrame.bgLeft.y = math.floor(UI.PrimaryMonitorHeight / 2) - 60
 playerFrame.bgLeft.originalX = math.floor(UI.PrimaryMonitorWidth / 2) - 215
 playerFrame.bgLeft.originalY = math.floor(UI.PrimaryMonitorHeight / 2) - 60
-playerFrame.bgLeft.width = 40
+playerFrame.bgLeft.width = 45
 playerFrame.bgLeft.height = 240
 playerFrame.bgLeft.rotation = 0
 playerFrame.bgLeft.hidden = true
+
+playerFrame.frameLeft = {}
+playerFrame.frameLeft.level = 0
+playerFrame.frameLeft.filepath = "textures\\SAO_bar_r5.png"
+playerFrame.frameLeft.tint = "#FFFFFFFF"
+playerFrame.frameLeft.x = playerFrame.bgLeft.originalX - 2
+playerFrame.frameLeft.y = playerFrame.bgLeft.originalY - 26
+playerFrame.frameLeft.scalex = 1
+playerFrame.frameLeft.scaley = 1
+playerFrame.frameLeft.rotation = 0
+playerFrame.frameLeft.hidden = true
 
 playerFrame.hpbar = {}
 playerFrame.hpbar.level = 0
@@ -85,8 +96,8 @@ playerFrame.valueHP.size = 12
 playerFrame.valueHP.style = 1
 playerFrame.valueHP.text = "0"
 playerFrame.valueHP.color = "#FFFFFFFF"
-playerFrame.valueHP.x = playerFrame.hpbar.x + playerFrame.hpbar.width / 4
-playerFrame.valueHP.y = playerFrame.hpbar.y + 10
+playerFrame.valueHP.x = playerFrame.hpbar.x + 1
+playerFrame.valueHP.y = playerFrame.hpbar.y - 25
 playerFrame.valueHP.width = 128
 playerFrame.valueHP.height = 128
 playerFrame.valueHP.aa = true
@@ -101,7 +112,7 @@ playerFrame.valueMP.size = 12
 playerFrame.valueMP.style = 1
 playerFrame.valueMP.text = "0"
 playerFrame.valueMP.color = "#FFFFFFFF"
-playerFrame.valueMP.x = playerFrame.mpbar.x + playerFrame.mpbar.width / 4
+playerFrame.valueMP.x = playerFrame.mpbar.x + 2
 playerFrame.valueMP.y = playerFrame.mpbar.y + 10
 playerFrame.valueMP.width = 128
 playerFrame.valueMP.height = 128
@@ -117,8 +128,8 @@ playerFrame.valueTP.size = 12
 playerFrame.valueTP.style = 1
 playerFrame.valueTP.text = "0"
 playerFrame.valueTP.color = "#FFFFFFFF"
-playerFrame.valueTP.x = playerFrame.tpbar.x + playerFrame.tpbar.width / 4
-playerFrame.valueTP.y = playerFrame.tpbar.y + 10
+playerFrame.valueTP.x = playerFrame.tpbar.x - 2
+playerFrame.valueTP.y = playerFrame.tpbar.y + playerFrame.tpbar.maxHeight - 10
 playerFrame.valueTP.width = 128
 playerFrame.valueTP.height = 128
 playerFrame.valueTP.aa = true
@@ -134,8 +145,8 @@ playerFrame.percentHP.size = 12
 playerFrame.percentHP.style = 1
 playerFrame.percentHP.text = "0"
 playerFrame.percentHP.color = "#FFFFFFFF"
-playerFrame.percentHP.x = playerFrame.hpbar.x + playerFrame.hpbar.width / 4
-playerFrame.percentHP.y = playerFrame.hpbar.y + playerFrame.hpbar.maxHeight- 10
+playerFrame.percentHP.x = playerFrame.hpbar.x + 18
+playerFrame.percentHP.y = playerFrame.hpbar.y - 8
 playerFrame.percentHP.width = 128
 playerFrame.percentHP.height = 128
 playerFrame.percentHP.aa = true
@@ -148,7 +159,8 @@ playerFrame.addTexture = function ()
 	if playerFrame.load == true then
 		UI.AddRectangle(playerFrame.bgLeft.level, playerFrame.bgLeft.color, "playerFrame.bgLeft.tint", "playerFrame.bgLeft.x", "playerFrame.bgLeft.y", "playerFrame.bgLeft.width", "playerFrame.bgLeft.height", "playerFrame.bgLeft.rotation", "playerFrame.bgLeft.hidden")
 		UI.AddRectangle(playerFrame.hpbar.level, playerFrame.hpbar.color, "playerFrame.hpbar.tint", "playerFrame.hpbar.x", "playerFrame.hpbar.y", "playerFrame.hpbar.width", "playerFrame.hpbar.height", "playerFrame.hpbar.rotation", "playerFrame.hpbar.hidden")
-		
+		UI.AddTexture(playerFrame.frameLeft.level, playerFrame.frameLeft.filepath, "playerFrame.frameLeft.tint", "playerFrame.frameLeft.x", "playerFrame.frameLeft.y", "playerFrame.frameLeft.scalex", "playerFrame.frameLeft.scaley", "playerFrame.frameLeft.rotation", "playerFrame.frameLeft.hidden")
+
 		UI.AddRectangle(playerFrame.bgRight.level, playerFrame.bgRight.color, "playerFrame.bgRight.tint", "playerFrame.bgRight.x", "playerFrame.bgRight.y", "playerFrame.bgRight.width", "playerFrame.bgRight.height", "playerFrame.bgRight.rotation", "playerFrame.bgRight.hidden")
 		UI.AddRectangle(playerFrame.mpbar.level, playerFrame.mpbar.color, "playerFrame.mpbar.tint", "playerFrame.mpbar.x", "playerFrame.mpbar.y", "playerFrame.mpbar.width", "playerFrame.mpbar.height", "playerFrame.mpbar.rotation", "playerFrame.mpbar.hidden")
 		UI.AddRectangle(playerFrame.tpbar.level, playerFrame.tpbar.color, "playerFrame.tpbar.tint", "playerFrame.tpbar.x", "playerFrame.tpbar.y", "playerFrame.tpbar.width", "playerFrame.tpbar.height", "playerFrame.tpbar.rotation", "playerFrame.tpbar.hidden")
@@ -167,7 +179,7 @@ playerFrame.update = function (player)
 		applyToTable(playerFrame, "hidden", false)
 
 		playerFrame.valueHP.text = player.CurrentHP
-		playerFrame.percentHP.text = (player.MaxHP * 100) / player.CurrentHP 
+		playerFrame.percentHP.text = string.format("%d", (player.CurrentHP * 100) / player.MaxHP) 
 		playerFrame.hpbar.height = ((player.CurrentHP * 100) / player.MaxHP) * (playerFrame.hpbar.maxHeight / 100)
 		playerFrame.hpbar.y = playerFrame.hpbar.originalY + (playerFrame.hpbar.maxHeight - playerFrame.hpbar.height)
 

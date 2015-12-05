@@ -8,7 +8,7 @@ feyWindBuff.load = false
 -- Table containing the Fey Wind image
 feyWindImage = {}
 feyWindImage.level = 0
-feyWindImage.filepath = "fey_wind.png"
+feyWindImage.filepath = "textures\\fey_wind.png"
 feyWindImage.tint = "#FFFFFFFF"
 feyWindImage.x = math.floor(UI.PrimaryMonitorWidth / 2)
 feyWindImage.y = math.floor(UI.PrimaryMonitorHeight / 2)
