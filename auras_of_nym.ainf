@@ -6,6 +6,8 @@
 >> FileList >>
 utils.lua
 main.lua
-aetherflowBuff.lua
+aetherflowStacks.lua
+aetherflowCooldown.lua
 feyWindBuff.lua
 unitframePlayer.lua
+castbar.lua

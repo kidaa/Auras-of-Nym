@@ -21,7 +21,8 @@ displayLabel.format = ""
 
 UI.OnLoad = function()
 	-- Adds the texture with 1, 2 and 3 stacks of Aetherflow
-	aetherflowBuff.addTexture()
+	aetherflowStacks.addTexture()
+	aetherflowCooldown.addTexture()
 
 	-- Adds the icon for the fey wind buff
 	feyWindBuff.addTexture()
@@ -43,19 +44,28 @@ UI.OnFrame = function(ticks)
 
 		-- Only for Scholars
 		if job == "28" then
-			aetherflowBuff.update(self)
-			-- displayLabel.text = "WIN"
+
+		-- if self.IsCasting then
+		-- 	displayLabel.text = self.IsCasting
+		-- end
+		
+		-- displayLabel.hidden = false
+
+			aetherflowStacks.update(self)
+
 			feyWindBuff.update(self)
 
 			playerFrame.update(self)
+ 
+			aetherflowCooldown.update(self, ticks)
 		
 		else 
 			playerFrame.hide()
-			aetherflowBuff.hide()
+			aetherflowStacks.hide()
 		end
 	
 	else 
 		playerFrame.hide()
-		aetherflowBuff.hide()
+		aetherflowStacks.hide()
 	end
 end
