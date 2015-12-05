@@ -54,7 +54,7 @@ UI.OnFrame = function(ticks)
 			-- 	displayLabel.text = "lose"
 			-- end
 
-			displayLabel.hidden = false
+			-- displayLabel.hidden = false
 
 			aetherflowStacks.update(self)
 
