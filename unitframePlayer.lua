@@ -9,8 +9,8 @@ playerFrame.bordersize = 2
 -- Left background with the HP bar
 playerFrame.bgLeft = {}
 playerFrame.bgLeft.level = 0
-playerFrame.bgLeft.color = "#B3000000"
-playerFrame.bgLeft.tint = "#B3FFFFFF"
+playerFrame.bgLeft.color = "#00000000"
+playerFrame.bgLeft.tint = "#00FFFFFF"
 playerFrame.bgLeft.x = math.floor(UI.PrimaryMonitorWidth / 2) - 215
 playerFrame.bgLeft.y = math.floor(UI.PrimaryMonitorHeight / 2) - 60
 playerFrame.bgLeft.originalX = math.floor(UI.PrimaryMonitorWidth / 2) - 215
@@ -22,7 +22,7 @@ playerFrame.bgLeft.hidden = true
 
 playerFrame.frameLeft = {}
 playerFrame.frameLeft.level = 0
-playerFrame.frameLeft.filepath = "textures\\SAO_bar_r5.png"
+playerFrame.frameLeft.filepath = "textures\\left_bar.png"
 playerFrame.frameLeft.tint = "#FFFFFFFF"
 playerFrame.frameLeft.x = playerFrame.bgLeft.originalX - 2
 playerFrame.frameLeft.y = playerFrame.bgLeft.originalY - 26
@@ -49,28 +49,39 @@ playerFrame.hpbar.hidden = true
 
 playerFrame.bgRight = {}
 playerFrame.bgRight.level = 0
-playerFrame.bgRight.color = "#B3000000"
-playerFrame.bgRight.tint = "#B3FFFFFF"
+playerFrame.bgRight.color = "#00000000" -- B3000000
+playerFrame.bgRight.tint = "#00FFFFFF" -- B3FFFFFF
 playerFrame.bgRight.x = math.floor(UI.PrimaryMonitorWidth / 2) + 150
 playerFrame.bgRight.y = math.floor(UI.PrimaryMonitorHeight / 2) - 60
 playerFrame.bgRight.originalX = math.floor(UI.PrimaryMonitorWidth / 2) + 150
 playerFrame.bgRight.originalY = math.floor(UI.PrimaryMonitorHeight / 2) - 60
-playerFrame.bgRight.width = 60
+playerFrame.bgRight.width = 92
 playerFrame.bgRight.height = 240
 playerFrame.bgRight.rotation = 0
 playerFrame.bgRight.hidden = true
+
+playerFrame.frameRight = {}
+playerFrame.frameRight.level = 0
+playerFrame.frameRight.filepath = "textures\\right_bar.png"
+playerFrame.frameRight.tint = "#FFFFFFFF"
+playerFrame.frameRight.x = playerFrame.bgRight.originalX - 1
+playerFrame.frameRight.y = playerFrame.bgRight.originalY - 27
+playerFrame.frameRight.scalex = 1
+playerFrame.frameRight.scaley = 1
+playerFrame.frameRight.rotation = 0
+playerFrame.frameRight.hidden = true
 
 playerFrame.mpbar = {}
 playerFrame.mpbar.level = 0
 playerFrame.mpbar.color = "#B3D24B87"
 playerFrame.mpbar.tint = "#B3FFFFFF"
 playerFrame.mpbar.x = playerFrame.bgRight.x + playerFrame.bordersize
-playerFrame.mpbar.y = playerFrame.bgRight.y + playerFrame.bordersize
+playerFrame.mpbar.y = playerFrame.bgRight.y + playerFrame.bordersize - 1
 playerFrame.mpbar.originalX = playerFrame.bgRight.x + playerFrame.bordersize
-playerFrame.mpbar.originalY = playerFrame.bgRight.y + playerFrame.bordersize
+playerFrame.mpbar.originalY = playerFrame.bgRight.y + playerFrame.bordersize - 1
 playerFrame.mpbar.width = (playerFrame.bgRight.width/2) - 3
-playerFrame.mpbar.height = playerFrame.bgRight.height - playerFrame.bordersize*2
-playerFrame.mpbar.maxHeight = playerFrame.bgRight.height - playerFrame.bordersize*2
+playerFrame.mpbar.height = playerFrame.bgRight.height - playerFrame.bordersize*2 + 1
+playerFrame.mpbar.maxHeight = playerFrame.bgRight.height - playerFrame.bordersize*2 + 1
 playerFrame.mpbar.rotation = playerFrame.bgRight.rotation
 playerFrame.mpbar.hidden = true
 
@@ -78,13 +89,13 @@ playerFrame.tpbar = {}
 playerFrame.tpbar.level = 0
 playerFrame.tpbar.color = "#B3F2A849"
 playerFrame.tpbar.tint = "#B3FFFFFF"
-playerFrame.tpbar.x = playerFrame.bgRight.x + playerFrame.bordersize * 2 + playerFrame.mpbar.width
-playerFrame.tpbar.y = playerFrame.bgRight.y + playerFrame.bordersize
-playerFrame.tpbar.originalX = playerFrame.bgRight.x + playerFrame.bordersize * 2 + playerFrame.mpbar.width
-playerFrame.tpbar.originalY = playerFrame.bgRight.y + playerFrame.bordersize
+playerFrame.tpbar.x = playerFrame.bgRight.x + playerFrame.bordersize * 4 + playerFrame.mpbar.width
+playerFrame.tpbar.y = playerFrame.bgRight.y + playerFrame.bordersize - 26
+playerFrame.tpbar.originalX = playerFrame.bgRight.x + playerFrame.bordersize * 4 + playerFrame.mpbar.width
+playerFrame.tpbar.originalY = playerFrame.bgRight.y + playerFrame.bordersize - 26
 playerFrame.tpbar.width = playerFrame.mpbar.width
-playerFrame.tpbar.height = playerFrame.bgRight.height - playerFrame.bordersize*2
-playerFrame.tpbar.maxHeight = playerFrame.bgRight.height - playerFrame.bordersize*2
+playerFrame.tpbar.height = playerFrame.bgRight.height - playerFrame.bordersize*2 + 1
+playerFrame.tpbar.maxHeight = playerFrame.bgRight.height - playerFrame.bordersize*2 + 1
 playerFrame.tpbar.rotation = playerFrame.bgRight.rotation
 playerFrame.tpbar.hidden = true
 
@@ -97,7 +108,7 @@ playerFrame.valueHP.style = 1
 playerFrame.valueHP.text = "0"
 playerFrame.valueHP.color = "#FFFFFFFF"
 playerFrame.valueHP.x = playerFrame.hpbar.x + 1
-playerFrame.valueHP.y = playerFrame.hpbar.y - 25
+playerFrame.valueHP.y = playerFrame.hpbar.y - 18 -- - 25
 playerFrame.valueHP.width = 128
 playerFrame.valueHP.height = 128
 playerFrame.valueHP.aa = true
@@ -112,8 +123,8 @@ playerFrame.valueMP.size = 12
 playerFrame.valueMP.style = 1
 playerFrame.valueMP.text = "0"
 playerFrame.valueMP.color = "#FFFFFFFF"
-playerFrame.valueMP.x = playerFrame.mpbar.x + 2
-playerFrame.valueMP.y = playerFrame.mpbar.y + 10
+playerFrame.valueMP.x = playerFrame.mpbar.x - 2
+playerFrame.valueMP.y = playerFrame.mpbar.y - 20
 playerFrame.valueMP.width = 128
 playerFrame.valueMP.height = 128
 playerFrame.valueMP.aa = true
@@ -128,8 +139,8 @@ playerFrame.valueTP.size = 12
 playerFrame.valueTP.style = 1
 playerFrame.valueTP.text = "0"
 playerFrame.valueTP.color = "#FFFFFFFF"
-playerFrame.valueTP.x = playerFrame.tpbar.x - 2
-playerFrame.valueTP.y = playerFrame.tpbar.y + playerFrame.tpbar.maxHeight - 10
+playerFrame.valueTP.x = playerFrame.tpbar.x - 3
+playerFrame.valueTP.y = playerFrame.tpbar.y + playerFrame.tpbar.maxHeight + 10
 playerFrame.valueTP.width = 128
 playerFrame.valueTP.height = 128
 playerFrame.valueTP.aa = true
@@ -141,12 +152,12 @@ playerFrame.valueTP.format = ""
 playerFrame.percentHP = {}
 playerFrame.percentHP.level = 0
 playerFrame.percentHP.font = "Copperplate Gothic Bold"
-playerFrame.percentHP.size = 12
+playerFrame.percentHP.size = 10
 playerFrame.percentHP.style = 1
 playerFrame.percentHP.text = "0"
 playerFrame.percentHP.color = "#FFFFFFFF"
-playerFrame.percentHP.x = playerFrame.hpbar.x + 18
-playerFrame.percentHP.y = playerFrame.hpbar.y - 8
+playerFrame.percentHP.x = playerFrame.hpbar.x + 22 -- + 18
+playerFrame.percentHP.y = playerFrame.hpbar.y + 25 -- - 8
 playerFrame.percentHP.width = 128
 playerFrame.percentHP.height = 128
 playerFrame.percentHP.aa = true
@@ -164,6 +175,7 @@ playerFrame.addTexture = function ()
 		UI.AddRectangle(playerFrame.bgRight.level, playerFrame.bgRight.color, "playerFrame.bgRight.tint", "playerFrame.bgRight.x", "playerFrame.bgRight.y", "playerFrame.bgRight.width", "playerFrame.bgRight.height", "playerFrame.bgRight.rotation", "playerFrame.bgRight.hidden")
 		UI.AddRectangle(playerFrame.mpbar.level, playerFrame.mpbar.color, "playerFrame.mpbar.tint", "playerFrame.mpbar.x", "playerFrame.mpbar.y", "playerFrame.mpbar.width", "playerFrame.mpbar.height", "playerFrame.mpbar.rotation", "playerFrame.mpbar.hidden")
 		UI.AddRectangle(playerFrame.tpbar.level, playerFrame.tpbar.color, "playerFrame.tpbar.tint", "playerFrame.tpbar.x", "playerFrame.tpbar.y", "playerFrame.tpbar.width", "playerFrame.tpbar.height", "playerFrame.tpbar.rotation", "playerFrame.tpbar.hidden")
+		UI.AddTexture(playerFrame.frameRight.level, playerFrame.frameRight.filepath, "playerFrame.frameRight.tint", "playerFrame.frameRight.x", "playerFrame.frameRight.y", "playerFrame.frameRight.scalex", "playerFrame.frameRight.scaley", "playerFrame.frameRight.rotation", "playerFrame.frameRight.hidden")
 
 		UI.AddLabel(playerFrame.valueHP.level, playerFrame.valueHP.font, playerFrame.valueHP.size, playerFrame.valueHP.style, "playerFrame.valueHP.text", "playerFrame.valueHP.color", "playerFrame.valueHP.x", "playerFrame.valueHP.y", "playerFrame.valueHP.width", "playerFrame.valueHP.height", "playerFrame.valueHP.aa", "playerFrame.valueHP.anchor", "playerFrame.valueHP.hidden")
 	    UI.AddLabel(playerFrame.valueMP.level, playerFrame.valueMP.font, playerFrame.valueMP.size, playerFrame.valueMP.style, "playerFrame.valueMP.text", "playerFrame.valueMP.color", "playerFrame.valueMP.x", "playerFrame.valueMP.y", "playerFrame.valueMP.width", "playerFrame.valueMP.height", "playerFrame.valueMP.aa", "playerFrame.valueMP.anchor", "playerFrame.valueMP.hidden")
