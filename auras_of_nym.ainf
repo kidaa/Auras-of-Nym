@@ -7,7 +7,8 @@
 utils.lua
 main.lua
 aetherflowStacks.lua
-aetherflowCooldown.lua
+aetherflowBuff.lua
+clericBuff.lua
 feyWindBuff.lua
 unitframePlayer.lua
 castbar.lua

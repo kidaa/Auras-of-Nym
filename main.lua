@@ -22,7 +22,10 @@ displayLabel.format = ""
 UI.OnLoad = function()
 	-- Adds the texture with 1, 2 and 3 stacks of Aetherflow
 	aetherflowStacks.addTexture()
-	aetherflowCooldown.addTexture()
+	aetherflowBuff.addTexture()
+
+	-- Add cleric stance aura
+	clericBuff.addTexture()
 
 	-- Adds the icon for the fey wind buff
 	feyWindBuff.addTexture()
@@ -45,11 +48,13 @@ UI.OnFrame = function(ticks)
 		-- Only for Scholars
 		if job == "28" then
 
-		-- if self.IsCasting then
-		-- 	displayLabel.text = self.IsCasting
-		-- end
-		
-		-- displayLabel.hidden = false
+			-- if self:GetBuffByID(145) ~= nil then
+			-- 	displayLabel.text = "win"
+			-- else
+			-- 	displayLabel.text = "lose"
+			-- end
+
+			displayLabel.hidden = false
 
 			aetherflowStacks.update(self)
 
@@ -57,15 +62,20 @@ UI.OnFrame = function(ticks)
 
 			playerFrame.update(self)
  
-			aetherflowCooldown.update(self, ticks)
+			aetherflowBuff.update(self, ticks)
+			clericBuff.update(self)
 		
 		else 
-			playerFrame.hide()
+			-- playerFrame.hide()
 			aetherflowStacks.hide()
+			aetherflowBuff.hide()
+			clericBuff.hide()
 		end
 	
 	else 
-		playerFrame.hide()
+		-- playerFrame.hide()
 		aetherflowStacks.hide()
+		aetherflowBuff.hide()
+		clericBuff.hide()
 	end
 end
